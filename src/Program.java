@@ -1,14 +1,14 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 public class Program {
     public static void main(String[] args) throws ParseException {
 
 
-        SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+       /* SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         SimpleDateFormat sdf3 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         sdf3.setTimeZone(TimeZone.getTimeZone("GMT"));
@@ -46,6 +46,24 @@ public class Program {
         System.out.println("x2: " + sdf3.format(x2));
         System.out.println("x3: " + sdf3.format(x3));
         System.out.println("x4: " + sdf3.format(x4));
+*/
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date d = Date.from(Instant.parse("2022-03-01T15:42:07Z"));
+
+        System.out.println(sdf.format(d));
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        /*cal.add(Calendar.HOUR_OF_DAY, 4);
+        d = cal.getTime();
+        */
+        int minutes = cal.get(Calendar.MINUTE);
+        int month = 1 + cal.get(Calendar.MONTH);
+
+        System.out.println("Minutes: " + minutes);
+        System.out.println("Month: " + month);
+
 
     }
 }
